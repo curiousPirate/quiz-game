@@ -11,10 +11,8 @@ const userName = document.querySelector("#initials")
 const submitBtn = document.querySelector("#submit")
 const feedBackEl = document.querySelector("#feedback")
 
-
-
+//Timer set to 100 secs
 var secondsLeft = 100
-
 
 //Timer count down function
 function startCountdown() {
@@ -27,10 +25,21 @@ function startCountdown() {
   }, 1000)
 }
 
+//Start quiz function
 function startQuiz () {
   startEl.classList.add("hide")
   questionsEl.classList.remove("hide")
+  displayQuestions()
   startCountdown()
 }
 
+//Start btn event listener
 startBtn.addEventListener("click", startQuiz)
+
+function displayQuestions() {
+  for(i = 0; i <= questions.length; i++) {
+    questionTitleEl.textContent = questions[i].question
+    choicesEl.textContent = questions[i].options
+  }
+}
+
