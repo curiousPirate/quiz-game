@@ -1,7 +1,7 @@
 //Selecting all DOM elements
 const timerEl = document.querySelector("#time")
-const startEl = document.querySelector(".start")
-const startBtn = document.querySelector("#start")
+const startEl = document.querySelector("#start-screen")
+const startBtn = document.getElementById("start")
 const questionsEl = document.querySelector("#questions")
 const questionTitleEl = document.querySelector("#question-title")
 const choicesEl = document.querySelector("#choices")
@@ -10,6 +10,11 @@ const finalScoreEl = document.querySelector("#final-score")
 const userName = document.querySelector("#initials")
 const submitBtn = document.querySelector("#submit")
 const feedBackEl = document.querySelector("#feedback")
+
+
+
+var secondsLeft = 100
+
 
 //Timer count down function
 function startCountdown() {
@@ -21,3 +26,11 @@ function startCountdown() {
     }
   }, 1000)
 }
+
+function startQuiz () {
+  startEl.classList.add("hide")
+  questionsEl.classList.remove("hide")
+  startCountdown()
+}
+
+startBtn.addEventListener("click", startQuiz)
