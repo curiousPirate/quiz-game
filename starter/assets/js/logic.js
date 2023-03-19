@@ -14,6 +14,10 @@ const feedBackEl = document.querySelector("#feedback")
 //Timer set to 100 secs
 var secondsLeft = 100
 
+//User input records
+var correctAnswer = 0
+var wrongAnswer = 0
+
 //Timer count down function
 function startCountdown() {
   timerInterval = setInterval(function () {
@@ -29,6 +33,7 @@ function startCountdown() {
 function startQuiz () {
   startEl.classList.add("hide")
   questionsEl.classList.remove("hide")
+  feedBackEl.classList.remove("hide")
   displayQuestions()
   startCountdown()
 }
@@ -36,10 +41,54 @@ function startQuiz () {
 //Start btn event listener
 startBtn.addEventListener("click", startQuiz)
 
+// function displayQuestions() {
+//   for(i = 0; i < questions.length; i++) {
+//     questionTitleEl.textContent = questions[i].question
+
+//     // Clear the existing choice buttons
+//     choicesEl.innerHTML = ""
+
+//     // Create a button element for each option and append it to the choices element
+//     for (j = 0; j < questions[i].options.length; j++) {
+//       let choiceBtn = document.createElement("button")
+//       choiceBtn.textContent = questions[i].options[j]
+//       choicesEl.appendChild(choiceBtn)
+//       choicesEl.appendChild(document.createElement("br"))
+//       choiceBtn.style.marginBottom = "10px" 
+//     }
+//   }
+// }
+
 function displayQuestions() {
-  for(i = 0; i <= questions.length; i++) {
+  for (let i = 0; i < questions.length; i++) {
+    // Set the question title
     questionTitleEl.textContent = questions[i].question
-    choicesEl.textContent = questions[i].options
+
+    // Clear the choices container
+    choicesEl.innerHTML = ""
+
+    // Create a button for each choice and append it to the choices container
+    for (let j = 0; j < questions[i].options.length; j++) {
+      const choiceBtn = document.createElement("button")
+      choiceBtn.innerHTML = questions[i].options[j]
+      choiceBtn.classList.add("choice")
+      choicesEl.appendChild(choiceBtn)
+
+      // Add an event listener to the button
+      choiceBtn.addEventListener("click", function () {
+        // Check if the user's response is correct
+        const userResponse = choiceBtn.innerHTML
+        const correctAnswer = questions[i].answer
+        if (userResponse === correctAnswer) {
+          correctAnswer++
+          feedBackEl.textContent = "Correct!"
+        } else {
+          wrongAnswer++
+          feedBackEl.textContent = "Wrong!"
+        }
+      });
+    }
   }
 }
+
 
