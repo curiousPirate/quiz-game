@@ -10,7 +10,7 @@
 
 ## URL
 
-
+https://curioushumans.github.io/quiz-game/index.html
   
 ## Screenshot
 
