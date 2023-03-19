@@ -11,7 +11,6 @@ const userName = document.querySelector("#initials")
 const submitBtn = document.querySelector("#submit")
 const feedbackEl = document.querySelector("#feedback")
 
-
 // Timer set to 100 seconds
 var secondsLeft = 100;
 var timerInterval;
@@ -79,7 +78,7 @@ function endQuiz() {
 
 // Submit score function
 submitBtn.addEventListener("click", function () {
-  localStorage.setItem("initials", userName.value);
+  localStorage.setItem("initials", JSON.stringify(userName.value));
   localStorage.setItem("score", secondsLeft);
   window.location.href = "highscores.html";
 });
