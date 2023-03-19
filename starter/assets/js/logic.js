@@ -78,9 +78,25 @@ function endQuiz() {
 
 // Submit score function
 submitBtn.addEventListener("click", function () {
-  localStorage.setItem("initials", JSON.stringify(userName.value));
-  localStorage.setItem("score", secondsLeft);
-  window.location.href = "highscores.html";
+  // Validate initials input
+  if (/^[A-Za-z]{1,3}$/.test(userName.value)) {
+    // Create new score object
+    const scoreObj = {
+      initials: userName.value,
+      score: secondsLeft,
+    };
+    // Get existing scores from local storage or initialize to empty array
+    let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    // Add new score to array
+    highScores.push(scoreObj);
+    // Save updated scores to local storage
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    // Redirect to highscores page
+    window.location.href = "highscores.html";
+  } else {
+    // Display error message for invalid initials input
+    alert("Only 3 initials allowed! & No numbers allowed!!")
+  }
 });
 
 // Start quiz event listener

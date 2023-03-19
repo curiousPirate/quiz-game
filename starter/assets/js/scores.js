@@ -1,15 +1,16 @@
-// Get high scores and initials from local storage
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-const initials = JSON.parse(localStorage.getItem("initials"));
-
-// Display high scores and initials
 function displayHighScores() {
-  for (let i = 0; i < highScores.length; i++) {
-    const scoreEl = document.createElement("li");
-    scoreEl.textContent = `${initials[i]} - ${highScores[i]}`;
-    highScores.appendChild(scoreEl);
+  var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  var highScoreList = document.getElementById("high-scores");
+
+  // Clear the existing content in the high score list
+  highScoreList.innerHTML = "";
+
+  // Create a new li element for each high score and append it to the list
+  for (var i = 0; i < highScores.length; i++) {
+    var highScore = highScores[i];
+    var li = document.createElement("li");
+    li.textContent = highScore.initials + " - " + highScore.score;
+    highScoreList.appendChild(li);
   }
 }
-
-// Call the displayHighScores function to show high scores and initials on the page
 displayHighScores();
