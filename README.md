@@ -14,7 +14,4 @@
   
 ## Screenshot
 
-
-
-
-
+<img width="1439" alt="Screenshot 2023-03-20 at 03 43 02" src="https://user-images.githubusercontent.com/85549330/226212763-9391c7ff-315c-48d5-87dc-e8e462aa1086.png">
