@@ -1,5 +1,5 @@
 //Selecting all DOM elements
-const timerEl = document.querySelector("#timer")
+const timerEl = document.querySelector("#time")
 const startEl = document.querySelector(".start")
 const startBtn = document.querySelector("#start")
 const questionsEl = document.querySelector("#questions")
@@ -10,3 +10,14 @@ const finalScoreEl = document.querySelector("#final-score")
 const userName = document.querySelector("#initials")
 const submitBtn = document.querySelector("#submit")
 const feedBackEl = document.querySelector("#feedback")
+
+//Timer count down function
+function startCountdown() {
+  timerInterval = setInterval(function () {
+    secondsLeft--
+    timerEl.textContent = secondsLeft
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval)
+    }
+  }, 1000)
+}
