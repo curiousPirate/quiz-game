@@ -14,3 +14,12 @@ function displayHighScores() {
   }
 }
 displayHighScores();
+
+// To clear the storage
+let clearBtn = document.getElementById("clear");
+
+clearBtn.addEventListener("click", function () {
+  localStorage.clear();
+  // Update the high score list on the page
+  displayHighScores();
+});
